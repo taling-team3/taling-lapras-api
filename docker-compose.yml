@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    taling-lapras-api:
+        container_name: taling-lapras-api
+        build:
+            context: .
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+
+networks:
+    sail:
+        external: true

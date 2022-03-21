@@ -1,0 +1,39 @@
+name: Backend Chat CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    container:
+      image: composer:latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: compose install
+        run: |
+          composer install
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Docker login
+        run: docker login -u ${{ screts.DOCKER_ID }} -p ${{ screts.DOCKER_TOKEN }} ${{ screts.DOCKER_HOST }}
+      - name: Build
+        run: docker build -t taling/lapras .
+      - name: Tags
+        run: |
+          docker tag taling/lapras ${{ screts.DOCKER_HOST }}/taling/lapras:${{ github.sha }}
+          docker tag taling/lapras ${{ screts.DOCKER_HOST }}/taling/lapras:latest
+      - name: Push
+        run: |
+          docker push ${{ screts.DOCKER_HOST }}/taling/lapras:${{ github.sha }}
+          docker push ${{ screts.DOCKER_HOST }}/taling/lapras:latest

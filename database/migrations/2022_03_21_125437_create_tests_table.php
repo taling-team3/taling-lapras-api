@@ -15,7 +15,7 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->text()->comment('테스트임');
+            $table->text('body')->comment('테스트임');
             $table->timestamps();
         });
     }

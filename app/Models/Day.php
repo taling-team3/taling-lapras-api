@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Day extends Model
 {
     use HasFactory;
+
+    // Relations
+    public function talent()
+    {
+        $this->belongsTo(Talent::class);
+    }
+
+    public function schedules()
+    {
+        $this->hasMany(Schedule::class);
+    }
 }

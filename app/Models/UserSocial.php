@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserSocial extends Model
 {
     use HasFactory;
+
+    // Relations
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
 }

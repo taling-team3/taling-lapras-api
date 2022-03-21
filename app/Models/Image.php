@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
+    // Relations
+    public function talent()
+    {
+        $this->belongsTo(Talent::class);
+    }
 }

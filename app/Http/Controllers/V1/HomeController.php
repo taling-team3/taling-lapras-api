@@ -20,4 +20,14 @@ class HomeController extends Controller
             return $this->error($err->getMessage(), $err->getCode());
         }
     }
+
+    public function getCategories()
+    {
+        try {
+            $thumbnails = Category::where('is_show', true)->orderBy('is_order', 'asc')->get();
+            return $this->success('카테고리를 불러 왔습니다.', new JsonResource($thumbnails));
+        } catch (\Exception $err) {
+            return $this->error($err->getMessage(), $err->getCode());
+        }
+    }
 }

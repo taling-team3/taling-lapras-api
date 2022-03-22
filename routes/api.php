@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('test', [App\Http\Controllers\TestController::class, 'index']);
 Route::post('test', [App\Http\Controllers\TestController::class, 'create']);
+
+Route::get('thumbnails', [\App\Http\Controllers\V1\HomeController::class, 'getThumbnails']);

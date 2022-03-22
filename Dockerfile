@@ -12,33 +12,26 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-
 # Frontend
 FROM node:14.19.0 as frontend
 
 RUN mkdir -p /app/public
-
 COPY package.json webpack.mix.js package-lock.json /app/
 COPY resources/ /app/resources/
-
 WORKDIR /app
 
 RUN npm install && npm run production
 
-
 # Application
-FROM php:8.1.3-apache-buster
+FROM php:8.1.4-fpm-alpine3.15
 COPY . /var/www/html
-RUN cp /var/www/html/000-default.conf /etc/apache2/sites-enabled/000-default.conf
-RUN cp /var/www/html/.env.production /var/www/html/.env
+COPY ./000-default.conf /etc/apache2/sites-enabled/000-default.conf
+COPY ./.env.production /var/www/html/.env
 
-RUN chown -R www-data:www-data /var/www/html/bootstrap/cache
-RUN chown -R www-data:www-data /var/www/html/storage
-RUN chmod -R 777 /var/www/html/storage/logs
-RUN chmod -R 777 /var/www/html/storage/framework
+RUN chown -R www-data:www-data /var/www/html/bootstrap/cache /var/www/html/storage
+RUN chmod -R 777 /var/www/html/storage/logs /var/www/html/storage/framework
 
 COPY --from=vendor /app/vendor/ /var/www/html/vendor/
 COPY --from=frontend /app/public/js/ /var/www/html/public/js/
 COPY --from=frontend /app/public/css/ /var/www/html/public/css/
 COPY --from=frontend /app/mix-manifest.json /var/www/html/mix-manifest.json
-

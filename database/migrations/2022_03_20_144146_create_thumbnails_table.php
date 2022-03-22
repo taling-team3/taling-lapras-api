@@ -15,11 +15,11 @@ class CreateThumbnailsTable extends Migration
     {
         Schema::create('thumbnails', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->string('alt');
-            $table->string('href');
-            $table->integer('is_order');
-            $table->boolean('is_show')->default(true);;
+            $table->string('url')->comment('파일 경로');
+            $table->string('alt')->comment('파일 이름');
+            $table->string('href')->nullable()->comment('클릭 시 이동할 페이지');
+            $table->integer('is_order')->comment('공개 순서');
+            $table->boolean('is_show')->default(true)->comment('공개 여부');
             $table->timestamps();
         });
     }

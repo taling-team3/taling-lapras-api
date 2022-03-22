@@ -15,8 +15,8 @@ class CreateTalentTypesTable extends Migration
     {
         Schema::create('talent_types', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['VOD', 'Online', 'Offline', 'Best', 'Recommend', 'eBook'])->default('Best');
-            $table->integer('is_show')->default(true);
+            $table->enum('type', ['VOD', 'Online', 'Offline', 'Best', 'Recommend', 'eBook'])->default('Best')->comment('공부 타입');
+            $table->boolean('is_show')->default(true)->comment('공개 여부');
             $table->timestamps();
         });
     }

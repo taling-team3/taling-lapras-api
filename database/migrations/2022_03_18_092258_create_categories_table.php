@@ -15,10 +15,10 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->integer('is_order');
-            $table->boolean('is_show')->default(true);;
+            $table->string('name')->comment('출력 Text');
+            $table->string('slug')->comment('검색 쿼리 Text');
+            $table->tinyInteger('is_order')->comment('순서');
+            $table->boolean('is_show')->default(true)->comment('공개 여부');
             $table->timestamps();
         });
     }

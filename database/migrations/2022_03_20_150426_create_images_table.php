@@ -16,10 +16,10 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('talent_id')->constrained('talents');
-            $table->string('url');
-            $table->string('alt');
-            $table->integer('is_order');
-            $table->boolean('is_show')->default(true);;
+            $table->string('url')->comment('이미지 URL');
+            $table->string('alt')->comment('이미지 이름');
+            $table->integer('is_order')->comment('이미지 순서');
+            $table->boolean('is_show')->default(true)->comment('공개 여부');
             $table->timestamps();
         });
     }

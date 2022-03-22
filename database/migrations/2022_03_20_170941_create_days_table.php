@@ -15,9 +15,9 @@ class CreateDaysTable extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('talent_id')->constrained('talents');
-            $table->enum('days', ['월', '화', '수', '목', '금', '토', '일'])->default('월');
-            $table->boolean('is_show')->default(true);
+            $table->foreignId('talent_id')->constrained('talents')->comment('강의 ID');
+            $table->enum('days', ['월', '화', '수', '목', '금', '토', '일'])->default('월')->comment('강의 요일');
+            $table->boolean('is_show')->default(true)->comment('공개 여부');
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->enum('level',['학생', '강사'])->comment('학생/강사 레벨');
             $table->rememberToken();
             $table->timestamps();

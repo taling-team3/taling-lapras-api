@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Tutor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tutor whereUserId($value)
  * @mixin \Eloquent
+ * @property string $name
+ * @method static \Illuminate\Database\Eloquent\Builder|Tutor whereName($value)
  */
 class Tutor extends Model
 {

@@ -34,5 +34,4 @@ jobs:
           docker tag taling/lapras ${{ secrets.DOCKER_HOST }}/taling/lapras:latest
       - name: Push
         run: |
-          docker push ${{ secrets.DOCKER_HOST }}/taling/lapras:${{ github.sha }}
           docker push ${{ secrets.DOCKER_HOST }}/taling/lapras:latest

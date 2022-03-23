@@ -31,6 +31,7 @@ FROM php:8.1.3-apache-buster
 COPY . /var/www/html
 RUN cp /var/www/html/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 RUN cp /var/www/html/.env.production /var/www/html/.env
+RUN docker-php-ext-install mysqli pdo pdo_mysql mbstring zip
 
 RUN chown -R www-data:www-data /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage

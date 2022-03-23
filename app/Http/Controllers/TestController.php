@@ -19,7 +19,7 @@ class TestController extends Controller
             $articles = Test::get();
             return $this->success('테스트 글들임', new TestResource($articles));
         } catch (\Exception $err) {
-            return $this->error($err->getMessage(), $err->getCode());
+            return $this->error($err->getMessage());
         }
     }
 
@@ -32,7 +32,7 @@ class TestController extends Controller
             $test->save();
             return $this->success('테스트 데이터 추가 됨', new TestResource($test), 200);
         } catch (\Exception $err) {
-            return $this->error($err->getMessage(), $err->getCode());
+            return $this->error($err->getMessage());
         }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ApiResponseTrait;
+use App\Models\Category;
 use App\Models\Talent;
 use App\Models\Thumbnail;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -81,5 +82,4 @@ class HomeController extends Controller
             return $this->error($err->getMessage(), $err->getCode());
         }
     }
-
 }

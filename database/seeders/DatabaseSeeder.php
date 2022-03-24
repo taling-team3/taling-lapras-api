@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             TalentSeeder::class,
             ImageSeeder::class,
             ApplicationSeeder::class,
+            DaySeeder::class,
+            ScheduleSeeder::class,
         ]);
     }
 }

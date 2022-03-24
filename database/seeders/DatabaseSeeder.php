@@ -43,11 +43,11 @@ class DatabaseSeeder extends Seeder
         TalentType::factory('6')->create();
         Category::factory('100')->create();
         Talent::factory('5000')->create();
-        Application::factory('100')->create();
-        Image::factory('100')->create();
-        Thumbnail::factory('100')->create();
+        Application::factory('1000')->create();
+        Image::factory('10000')->create();
+        Thumbnail::factory('10')->create();
         Day::factory('100')->create();
         Schedule::factory('100')->create();
-        Like::factory('150')->create();
+        Like::factory('15000')->create();
     }
 }

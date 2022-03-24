@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         Tutor::factory('100')->create();
         TalentType::factory('6')->create();
         Category::factory('100')->create();
-        Talent::factory('100')->create();
+        Talent::factory('5000')->create();
         Application::factory('100')->create();
         Image::factory('100')->create();
         Thumbnail::factory('100')->create();

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Talent;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ApplicationFactory extends Factory
@@ -16,8 +17,10 @@ class ApplicationFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::whereLevel('학생')->inRandomOrder()->first()->id,
+            'user_id' => User::all()->random()->id,
             'talent_id' => Talent::all()->random()->id,
+//            'created_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
+//            'updated_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
         ];
     }
 }

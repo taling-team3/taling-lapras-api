@@ -12,7 +12,6 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-
 # Frontend
 FROM node:14.19.0 as frontend
 
@@ -24,7 +23,6 @@ COPY resources/ /app/resources/
 WORKDIR /app
 
 RUN npm install && npm run production
-
 
 # Application
 FROM php:8.1.3-apache-buster
@@ -42,4 +40,3 @@ COPY --from=vendor /app/vendor/ /var/www/html/vendor/
 COPY --from=frontend /app/public/js/ /var/www/html/public/js/
 COPY --from=frontend /app/public/css/ /var/www/html/public/css/
 COPY --from=frontend /app/mix-manifest.json /var/www/html/mix-manifest.json
-

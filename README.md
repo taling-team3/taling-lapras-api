@@ -1,64 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 탈잉 클론코딩 프로젝트
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### 팀 마스코트: 라프라스
 
-## About Laravel
+<img src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201609/22/htm_20160922124534774155.png">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 프로젝트 소개
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+PHP/Laravel 개발자와 TypeScript/Vue.js 개발자가 팀을 결성해 탈잉의 홈, 클래스 상세, 검색 페이지를 클론 코딩하였습니다.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 기술스택
 
-## Learning Laravel
+<img src="https://img.shields.io/badge/php-777BB4?style=for-the-badge&logo=php&logoColor=white"/><img src="https://img.shields.io/badge/laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/><img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"/><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"/><img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=TailwindCSS&logoColor=white"/><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
+<br><br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 개발 팀원
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+박경서(백엔드-인프라)  
+김현진(백엔드-API)  
+이종화(프론트엔드)  
+지혜수(프론트엔드)
 
-## Laravel Sponsors
+## 개발 일정
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2022.3.16 ~ 2022.3.25.
 
-### Premium Partners
+## 개발환경 세팅
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+개발환경을 세팅하기 위해서는 `Docker`와 `Docker Compose` 가 설치 되어 있어야 한다.
 
-## Contributing
+```bash
+$ git clone git@github.com:taling-team3/taling-lapras-frontend.git
+$ cd taling-lapras-frontend
+$ docker-compose up -d 
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+접속 URL : http://localhost  
+아래 로그 출력 시 권한 필요
 
-## Code of Conduct
+```log
+The stream or file "/var/www/html/storage/logs/laravel.log" could not be opened in append mode: Failed to open stream: Permission denied The exception occurred while attempting to log:
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+chown -R www-data:www-data bootstrap/cache
+chown -R www-data:www-data storage
+chmod -R 777 storage/logs
+chmod -R 777 storage/framework
+```
 
-## Security Vulnerabilities
+## 배포
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+$ pwd
+..../taling-lapras-frontend
+$ git push 
+```
 
-## License
+Push 또는 Merge 될 경우, [GIT Action](https://github.com/taling-team3/taling-lapras-api/actions) 이 실행 된다.    
+GIT Action 을 통해 도커 프라이빗 레지스트리에 이미지가 추가 된다.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+최종 배포는 https://portainer.kkyungvelyy.com/ 에서 진행 하면 된다.
+
+## 운영 자료
+
+- FQDN : https://lapras.wo.tc/api
+- API 문서 : https://lapras.wo.tc/api/request-docs
+- 기타(노션) : https://www.notion.so/taling-lapras/38312bc1cdcd4b49a6910afacda05444
+
+## API 응답 방식
+```json
+{
+  "message": "메세지(string)",
+  "error": "성공여부(boolean)",
+  "code": 상태코드(integer),
+  "results": 결과값(array)
+}
+```

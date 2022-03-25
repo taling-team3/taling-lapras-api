@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name')->comment('출력 Text');
             $table->string('slug')->comment('검색 쿼리 Text');
+            $table->unsignedBigInteger('parent')->nullable()->comment('부모 테이블');
             $table->tinyInteger('is_order')->comment('순서');
             $table->boolean('is_show')->default(true)->comment('공개 여부');
             $table->timestamps();

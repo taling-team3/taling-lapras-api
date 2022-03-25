@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|UserSocial whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserSocial whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\UserSocialFactory factory(...$parameters)
  */
 class UserSocial extends Model
 {

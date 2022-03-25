@@ -15,14 +15,13 @@ class ScheduleFactory extends Factory
      */
     public function definition()
     {
-        $started_at = Carbon::createFromTimestamp($this->faker->dateTimeBetween('-1 years', '+6 month')->getTimeStamp());
-        $finished_at = Carbon::createFromFormat('Y-m-d H:i:s', $started_at)->addHours($this->faker->numberBetween( 1, 8 ) );
-
         return [
-            'day_id' => Day::all()->random()->id,
-            'started_at' => $started_at,
-            'finished_at' => $finished_at,
-            'is_show' => $this->faker->randomElement([0, 1]),
+            'day_id' => Day::all()->random(),
+            'started_at' => $this->faker->dateTimeBetween($startDate = '-10 days', $endDate = '-3 days')->format('Y-m-d h:00'),
+            'finished_at' =>$this->faker->dateTimeBetween($startDate = '-2 days', $endDate = '+10 days')->format('Y-m-d h:00'),
+            'is_show' => true,
+            'created_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
         ];
     }
 }

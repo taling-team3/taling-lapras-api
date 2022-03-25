@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Category;
 use App\Models\TalentType;
 use App\Models\Tutor;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TalentFactory extends Factory
@@ -18,8 +19,8 @@ class TalentFactory extends Factory
     {
         return [
             'tutor_id' => Tutor::all()->random()->id,
-            'category_id' => Category::whereIsShow(true)->inRandomOrder()->first()->id,
-            'talent_type_id' => TalentType::whereIsShow(true)->inRandomOrder()->first()->id,
+            'category_id' => Category::all()->where('is_show', true)->random(),
+            'talent_type_id' => TalentType::all()->where('is_show', true)->random(),
             'name' => $this->faker->word(),
             'msg_notice' => $this->faker->text(1000),
             'msg_summary' => $this->faker->text(1000),
@@ -31,6 +32,8 @@ class TalentFactory extends Factory
             'view_counts' => $this->faker->numberBetween(0, 100),
             'like_counts' => $this->faker->numberBetween(0, 50),
             'is_show' => $this->faker->randomElement([0, 1]),
+            'created_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
         ];
     }
 }

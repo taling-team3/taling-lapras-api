@@ -15,7 +15,7 @@ class CreateUserSocialsTable extends Migration
     {
         Schema::create('user_socials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained('users');
             $table->integer('channel_id')->comment('채널 id');
             $table->string('channel_name')->comment('채널 이름');
             $table->boolean('is_show')->default(true)->comment('공개 여부');

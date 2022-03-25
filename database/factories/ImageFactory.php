@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Talent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ImageFactory extends Factory
@@ -20,6 +21,8 @@ class ImageFactory extends Factory
             'alt' => $this->faker->word(),
             'is_order' => $this->faker->randomElement([0, 1]),
             'is_show' => $this->faker->randomElement([0, 1]),
+            'created_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
         ];
     }
 }

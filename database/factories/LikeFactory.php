@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Talent;
+use App\Models\Like;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-class DayFactory extends Factory
+use App\Models\User;
+class LikeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,9 +16,9 @@ class DayFactory extends Factory
     public function definition()
     {
         return [
-            'talent_id' => Talent::all()->random()->id,
-            'days' =>  $this->faker->randomElement(['월', '화', '수', '목', '금', '토', '일']),
-            'is_show' => true,
+            'user_id' => User::all()->random()->id,
+            'likeable_id' => $this->faker->unique()->numberBetween(1, 100000000), // Like::all()->random()->id,
+            'likeable_type' => "App\Models\Talent",
             'created_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
         ];

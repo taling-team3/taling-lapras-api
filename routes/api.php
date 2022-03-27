@@ -21,4 +21,10 @@ Route::get('categories', [\App\Http\Controllers\V1\HomeController::class, 'getCa
 // Route::get('taling-recommend', [\App\Http\Controllers\V1\HomeController::class, 'getRecommend']);
 Route::get('taling-recommend', [\App\Http\Controllers\TestController::class, 'getRecommendTest']);
 // Route::get('taling-best', [\App\Http\Controllers\V1\HomeController::class, 'getTalingBest']);
-Route::get('taling-best', [\App\Http\Controllers\TestController::class, 'getTalingbestTest']);
+// Route::get('taling-best', [\App\Http\Controllers\TestController::class, 'getTalingbestTest']);
+
+
+Route::get('taling-best', [\App\Http\Controllers\V1\TalentController::class, 'getTalingBest']);
+Route::get('recommend-talent', [\App\Http\Controllers\V1\TalentController::class, 'getRecommendTalent']);
+Route::get('talent/{id}', [\App\Http\Controllers\V1\TalentController::class, 'getTalentDetail']);
+Route::get('talent/id/related', [\App\Http\Controllers\V1\TalentController::class, 'getTalentDetailRelated']);

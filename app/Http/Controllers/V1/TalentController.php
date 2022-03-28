@@ -3,15 +3,25 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\TalingBestRequest;
+use App\Http\Traits\ApiResponseTrait;
+use App\Models\Talent;
 use Illuminate\Http\Request;
 
 class TalentController extends Controller
 {
+    /** string $message, JsonResource|null $data = null, int $statusCode = 200 */
+    /** success, error, validation */
+    use ApiResponseTrait;
     // 탈잉 Best
     public function getTalingBest()
     {
-
-        return [];
+        try {
+            $talent_best = Talent::whereIsShow(true)->orderByDesc('like_counts')->get();
+            return $this->success('테스트 글들임', new TalingBestRequest($talent_best));
+        } catch (\Exception $err) {
+            return $this->error($err->getMessage());
+        }
     }
 
     // 오늘 인기 원데이

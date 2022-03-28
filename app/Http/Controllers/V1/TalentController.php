@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\TalingBestRequest;
 use App\Http\Traits\ApiResponseTrait;
 use App\Models\Talent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TalentController extends Controller
@@ -25,10 +26,14 @@ class TalentController extends Controller
     }
 
     // 오늘 인기 원데이
-    public function getRecommendTalent()
+    public function getTalentRecommend()
     {
-
-        return [];
+        try {
+            $talent_best = Talent::whereIsShow(true)->where('created_at', '>=', Carbon::today())->orderByDesc('like_counts')->get();
+            return $this->success('테스트 글들임', new TalingBestRequest($talent_best));
+        } catch (\Exception $err) {
+            return $this->error($err->getMessage());
+        }
     }
 
     // 클래스 상세

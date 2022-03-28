@@ -25,6 +25,6 @@ Route::get('taling-recommend', [\App\Http\Controllers\TestController::class, 'ge
 
 
 Route::get('taling-best', [\App\Http\Controllers\V1\TalentController::class, 'getTalingBest']);
-Route::get('recommend-talent', [\App\Http\Controllers\V1\TalentController::class, 'getRecommendTalent']);
+Route::get('talent/recommend', [\App\Http\Controllers\V1\TalentController::class, 'getTalentRecommend']);
 Route::get('talent/{id}', [\App\Http\Controllers\V1\TalentController::class, 'getTalentDetail']);
 Route::get('talent/id/related', [\App\Http\Controllers\V1\TalentController::class, 'getTalentDetailRelated']);

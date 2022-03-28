@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\TalentDetailRequest;
 use App\Http\Resources\V1\TalingBestRequest;
 use App\Http\Traits\ApiResponseTrait;
 use App\Models\Talent;
@@ -37,9 +38,18 @@ class TalentController extends Controller
     }
 
     // 클래스 상세
-    public function getTalentDetail()
+    public function getTalentDetail($id)
     {
-        return [];
+        try {
+            $talent_best = Talent::whereId($id)->whereIsShow(true)->get();
+            foreach ($talent_best as $value) {
+                return $value->application;
+            }
+            return var_dump($talent_best);
+            return $this->success('테스트 글들임', new TalentDetailRequest($talent_best));
+        } catch (\Exception $err) {
+            return $this->error($err->getMessage());
+        }
     }
 
     // 클래스와 관련된 다른 강의

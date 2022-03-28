@@ -27,7 +27,7 @@ RUN npm install && npm run production
 # Application
 FROM php:8.1.3-apache-buster
 COPY . /var/www/html
-RUN cp /var/www/html/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+RUN cp /var/www/html/docker/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 RUN cp /var/www/html/.env.production /var/www/html/.env
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
